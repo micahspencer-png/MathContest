@@ -2,6 +2,11 @@ using System.Diagnostics.Eventing.Reader;
 
 namespace MathContest
 {
+    //Micah Spencer
+    //RCET 2265
+    //Fall 2025
+    //Math Contest Form Program
+    //
     public partial class MathContest : Form
     {
         public MathContest()
@@ -15,12 +20,8 @@ namespace MathContest
         double firstNumber = 0.0;
         double secondNumber = 0.0;
 
-        string name = "";
-        int age = 0;
-        int grade = 0;
-        int _age = 0;
-        int _grade = 0;
-        string _name = "";
+        //Program Logic--------------------------------------------------------------------------------------------
+        
         void SetDefaults() 
         {
             RightAnswers = 0;
@@ -42,27 +43,16 @@ namespace MathContest
             SummaryButton.Enabled = false;
         }
 
-        void SetStudent()
-        {
-            if (name != _name||age != _age||grade != _grade) 
-            { 
-                RightAnswers = 0;
-                TotalAnswers = 0;
-                ValidateInputs();
-            }
-            else
-            {
-                ValidateInputs();
-            }
-        }
-
         void ValidateInputs() 
         {
             bool allFieldsAreValid = true;
             NameTextBox.BackColor = Color.White;
             AgeTextBox.BackColor = Color.White;
             GradeTextBox.BackColor = Color.White;
-            
+            int _grade = 0;
+            int _age = 0;
+            RightAnswers = 0;
+            TotalAnswers = 0;
             
             try
             {
@@ -72,10 +62,7 @@ namespace MathContest
                     allFieldsAreValid = false;
                     GradeTextBox.BackColor = Color.LightYellow;
                 }
-                else 
-                {
-                    grade = _grade;
-                }
+                
             }
             catch (Exception)
             {
@@ -92,10 +79,6 @@ namespace MathContest
                     allFieldsAreValid = false;
                     AgeTextBox.BackColor = Color.LightYellow;
                 }
-                else 
-                {
-                    age = _age;
-                }
             }
             catch (Exception)
             {
@@ -111,18 +94,13 @@ namespace MathContest
                 NameTextBox.BackColor = Color.LightYellow;
                 
             }
-            else 
-            {
-                name = NameTextBox.Text;
-                _name = name;
-            }
 
             if (allFieldsAreValid == true)
             {
                 ProgramNumbers();
             }
 
-
+            SummaryButton.Enabled = false;
 
             SubmitButton.Enabled = allFieldsAreValid;
             AddButton.Enabled = allFieldsAreValid;
@@ -167,24 +145,34 @@ namespace MathContest
             { 
                 answer += firstNumber / secondNumber;
             }
+            double topAnswer = answer * 1.1;
+            double bottomAnswer = answer * 0.9;
+            
+            try
+            {
+                userAnswer = double.Parse(AnswerTextBox.Text);
+                if (userAnswer <= topAnswer && userAnswer >= bottomAnswer)
+                {
+                    MessageBox.Show("Correct");
+                    RightAnswers += 1;
+                }
+                else if (userAnswer <= bottomAnswer && userAnswer >= topAnswer) 
+                {
+                    MessageBox.Show("Correct");
+                    RightAnswers += 1;
+                }
 
-            userAnswer = double.Parse(AnswerTextBox.Text);
-            if (userAnswer >= answer * 0.9 && userAnswer <= answer * 1.1)
-            {
-                RightAnswers += 1;
-                MessageBox.Show("Correct");
+                else
+                {
+                    MessageBox.Show("Incorrect");
+                }
+
             }
-            else if (userAnswer <= answer * -0.9 && userAnswer >= answer * -1.1)
+            catch (Exception)
             {
-                RightAnswers += 1;
-                MessageBox.Show("Correct");
-            }
-            else
-            {
-                MessageBox.Show("Incorrect");
+
             }
 
-            ProgramNumbers();
             
             TotalAnswers += 1;
             if (TotalAnswers > 0)
@@ -197,7 +185,13 @@ namespace MathContest
         //Event Handlers------------------------------------------------------------------------------------------
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            CheckNumbers();
+            if (AnswerTextBox.Text != "") 
+            {
+                CheckNumbers();
+                ProgramNumbers();
+                AnswerTextBox.Text = "";
+                AnswerTextBox.Focus(); 
+            }
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -217,7 +211,7 @@ namespace MathContest
 
         private void Text_Changed(object sender, EventArgs e) 
         {
-            SetStudent();
+            ValidateInputs();
         }
 
         private void Button_Changed(object sender, EventArgs e) 
