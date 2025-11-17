@@ -29,10 +29,16 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            NameLabel = new Label();
+            AgeLabel = new Label();
+            GradeLabel = new Label();
             AgeTextBox = new TextBox();
             GradeTextBox = new TextBox();
             NameTextBox = new TextBox();
             groupBox2 = new GroupBox();
+            AnswerLabel = new Label();
+            TwoNumLabel = new Label();
+            OneNumLabel = new Label();
             OneNumTextBox = new TextBox();
             AnswerTextBox = new TextBox();
             TwoNumTextBox = new TextBox();
@@ -46,12 +52,6 @@
             SummaryButton = new Button();
             ClearButton = new Button();
             SubmitButton = new Button();
-            GradeLabel = new Label();
-            AgeLabel = new Label();
-            NameLabel = new Label();
-            OneNumLabel = new Label();
-            TwoNumLabel = new Label();
-            AnswerLabel = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -73,12 +73,40 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Student Information";
             // 
+            // NameLabel
+            // 
+            NameLabel.AutoSize = true;
+            NameLabel.Location = new Point(30, 28);
+            NameLabel.Name = "NameLabel";
+            NameLabel.Size = new Size(49, 20);
+            NameLabel.TabIndex = 3;
+            NameLabel.Text = "Name";
+            // 
+            // AgeLabel
+            // 
+            AgeLabel.AutoSize = true;
+            AgeLabel.Location = new Point(262, 28);
+            AgeLabel.Name = "AgeLabel";
+            AgeLabel.Size = new Size(36, 20);
+            AgeLabel.TabIndex = 3;
+            AgeLabel.Text = "Age";
+            // 
+            // GradeLabel
+            // 
+            GradeLabel.AutoSize = true;
+            GradeLabel.Location = new Point(366, 28);
+            GradeLabel.Name = "GradeLabel";
+            GradeLabel.Size = new Size(49, 20);
+            GradeLabel.TabIndex = 3;
+            GradeLabel.Text = "Grade";
+            // 
             // AgeTextBox
             // 
             AgeTextBox.Location = new Point(262, 50);
             AgeTextBox.Name = "AgeTextBox";
             AgeTextBox.Size = new Size(53, 27);
             AgeTextBox.TabIndex = 1;
+            AgeTextBox.TextChanged += Text_Changed;
             // 
             // GradeTextBox
             // 
@@ -86,6 +114,7 @@
             GradeTextBox.Name = "GradeTextBox";
             GradeTextBox.Size = new Size(53, 27);
             GradeTextBox.TabIndex = 2;
+            GradeTextBox.TextChanged += Text_Changed;
             // 
             // NameTextBox
             // 
@@ -93,6 +122,7 @@
             NameTextBox.Name = "NameTextBox";
             NameTextBox.Size = new Size(169, 27);
             NameTextBox.TabIndex = 0;
+            NameTextBox.TextChanged += Text_Changed;
             // 
             // groupBox2
             // 
@@ -109,10 +139,38 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Current Math Problem";
             // 
+            // AnswerLabel
+            // 
+            AnswerLabel.AutoSize = true;
+            AnswerLabel.Location = new Point(30, 195);
+            AnswerLabel.Name = "AnswerLabel";
+            AnswerLabel.Size = new Size(57, 20);
+            AnswerLabel.TabIndex = 3;
+            AnswerLabel.Text = "Answer";
+            // 
+            // TwoNumLabel
+            // 
+            TwoNumLabel.AutoSize = true;
+            TwoNumLabel.Location = new Point(30, 140);
+            TwoNumLabel.Name = "TwoNumLabel";
+            TwoNumLabel.Size = new Size(116, 20);
+            TwoNumLabel.TabIndex = 3;
+            TwoNumLabel.Text = "Second Number";
+            // 
+            // OneNumLabel
+            // 
+            OneNumLabel.AutoSize = true;
+            OneNumLabel.Location = new Point(30, 77);
+            OneNumLabel.Name = "OneNumLabel";
+            OneNumLabel.Size = new Size(94, 20);
+            OneNumLabel.TabIndex = 3;
+            OneNumLabel.Text = "First Number";
+            // 
             // OneNumTextBox
             // 
             OneNumTextBox.Location = new Point(30, 100);
             OneNumTextBox.Name = "OneNumTextBox";
+            OneNumTextBox.ReadOnly = true;
             OneNumTextBox.Size = new Size(222, 27);
             OneNumTextBox.TabIndex = 0;
             // 
@@ -127,6 +185,7 @@
             // 
             TwoNumTextBox.Location = new Point(30, 159);
             TwoNumTextBox.Name = "TwoNumTextBox";
+            TwoNumTextBox.ReadOnly = true;
             TwoNumTextBox.Size = new Size(222, 27);
             TwoNumTextBox.TabIndex = 1;
             // 
@@ -153,6 +212,7 @@
             DivideButton.TabStop = true;
             DivideButton.Text = "&Divide";
             DivideButton.UseVisualStyleBackColor = true;
+            DivideButton.CheckedChanged += Button_Changed;
             // 
             // MultiplyButton
             // 
@@ -164,6 +224,7 @@
             MultiplyButton.TabStop = true;
             MultiplyButton.Text = "&Multiply";
             MultiplyButton.UseVisualStyleBackColor = true;
+            MultiplyButton.CheckedChanged += Button_Changed;
             // 
             // SubtractButton
             // 
@@ -175,6 +236,7 @@
             SubtractButton.TabStop = true;
             SubtractButton.Text = "S&ubtract";
             SubtractButton.UseVisualStyleBackColor = true;
+            SubtractButton.CheckedChanged += Button_Changed;
             // 
             // AddButton
             // 
@@ -186,6 +248,7 @@
             AddButton.TabStop = true;
             AddButton.Text = "&Add";
             AddButton.UseVisualStyleBackColor = true;
+            AddButton.CheckedChanged += Button_Changed;
             // 
             // groupBox4
             // 
@@ -238,60 +301,6 @@
             SubmitButton.Text = "&Submit";
             SubmitButton.UseVisualStyleBackColor = true;
             SubmitButton.Click += SubmitButton_Click;
-            // 
-            // GradeLabel
-            // 
-            GradeLabel.AutoSize = true;
-            GradeLabel.Location = new Point(366, 28);
-            GradeLabel.Name = "GradeLabel";
-            GradeLabel.Size = new Size(49, 20);
-            GradeLabel.TabIndex = 3;
-            GradeLabel.Text = "Grade";
-            // 
-            // AgeLabel
-            // 
-            AgeLabel.AutoSize = true;
-            AgeLabel.Location = new Point(262, 28);
-            AgeLabel.Name = "AgeLabel";
-            AgeLabel.Size = new Size(36, 20);
-            AgeLabel.TabIndex = 3;
-            AgeLabel.Text = "Age";
-            // 
-            // NameLabel
-            // 
-            NameLabel.AutoSize = true;
-            NameLabel.Location = new Point(30, 28);
-            NameLabel.Name = "NameLabel";
-            NameLabel.Size = new Size(49, 20);
-            NameLabel.TabIndex = 3;
-            NameLabel.Text = "Name";
-            // 
-            // OneNumLabel
-            // 
-            OneNumLabel.AutoSize = true;
-            OneNumLabel.Location = new Point(30, 77);
-            OneNumLabel.Name = "OneNumLabel";
-            OneNumLabel.Size = new Size(94, 20);
-            OneNumLabel.TabIndex = 3;
-            OneNumLabel.Text = "First Number";
-            // 
-            // TwoNumLabel
-            // 
-            TwoNumLabel.AutoSize = true;
-            TwoNumLabel.Location = new Point(30, 140);
-            TwoNumLabel.Name = "TwoNumLabel";
-            TwoNumLabel.Size = new Size(116, 20);
-            TwoNumLabel.TabIndex = 3;
-            TwoNumLabel.Text = "Second Number";
-            // 
-            // AnswerLabel
-            // 
-            AnswerLabel.AutoSize = true;
-            AnswerLabel.Location = new Point(30, 195);
-            AnswerLabel.Name = "AnswerLabel";
-            AnswerLabel.Size = new Size(57, 20);
-            AnswerLabel.TabIndex = 3;
-            AnswerLabel.Text = "Answer";
             // 
             // MathContest
             // 
