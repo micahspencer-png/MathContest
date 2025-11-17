@@ -164,7 +164,7 @@ namespace MathContest
 
                 else
                 {
-                    MessageBox.Show("Incorrect");
+                    MessageBox.Show($"Incorrect. Correct answer is {answer}");
                 }
 
             }
