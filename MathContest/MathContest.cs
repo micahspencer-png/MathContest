@@ -6,7 +6,7 @@ namespace MathContest
     //RCET 2265
     //Fall 2025
     //Math Contest Form Program
-    //
+    //https://github.com/micahspencer-png/MathContest.git
     public partial class MathContest : Form
     {
         public MathContest()

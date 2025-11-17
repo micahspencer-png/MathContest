@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             NameLabel = new Label();
             AgeLabel = new Label();
@@ -52,6 +53,7 @@
             SummaryButton = new Button();
             ClearButton = new Button();
             SubmitButton = new Button();
+            toolTip1 = new ToolTip(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -106,6 +108,7 @@
             AgeTextBox.Name = "AgeTextBox";
             AgeTextBox.Size = new Size(53, 27);
             AgeTextBox.TabIndex = 1;
+            toolTip1.SetToolTip(AgeTextBox, "Set age here(7-11)");
             AgeTextBox.TextChanged += Text_Changed;
             // 
             // GradeTextBox
@@ -114,6 +117,7 @@
             GradeTextBox.Name = "GradeTextBox";
             GradeTextBox.Size = new Size(53, 27);
             GradeTextBox.TabIndex = 2;
+            toolTip1.SetToolTip(GradeTextBox, "Set grade here(1-4)");
             GradeTextBox.TextChanged += Text_Changed;
             // 
             // NameTextBox
@@ -122,6 +126,7 @@
             NameTextBox.Name = "NameTextBox";
             NameTextBox.Size = new Size(169, 27);
             NameTextBox.TabIndex = 0;
+            toolTip1.SetToolTip(NameTextBox, "Input name");
             NameTextBox.TextChanged += Text_Changed;
             // 
             // groupBox2
@@ -180,6 +185,7 @@
             AnswerTextBox.Name = "AnswerTextBox";
             AnswerTextBox.Size = new Size(222, 27);
             AnswerTextBox.TabIndex = 2;
+            toolTip1.SetToolTip(AnswerTextBox, "Type your answer here");
             // 
             // TwoNumTextBox
             // 
@@ -211,6 +217,7 @@
             DivideButton.TabIndex = 3;
             DivideButton.TabStop = true;
             DivideButton.Text = "&Divide";
+            toolTip1.SetToolTip(DivideButton, "Sets answer as first number / second number");
             DivideButton.UseVisualStyleBackColor = true;
             DivideButton.CheckedChanged += Button_Changed;
             // 
@@ -223,6 +230,7 @@
             MultiplyButton.TabIndex = 2;
             MultiplyButton.TabStop = true;
             MultiplyButton.Text = "&Multiply";
+            toolTip1.SetToolTip(MultiplyButton, "Sets answer as first number * second number");
             MultiplyButton.UseVisualStyleBackColor = true;
             MultiplyButton.CheckedChanged += Button_Changed;
             // 
@@ -235,6 +243,7 @@
             SubtractButton.TabIndex = 1;
             SubtractButton.TabStop = true;
             SubtractButton.Text = "S&ubtract";
+            toolTip1.SetToolTip(SubtractButton, "Sets answer as first number - second number");
             SubtractButton.UseVisualStyleBackColor = true;
             SubtractButton.CheckedChanged += Button_Changed;
             // 
@@ -247,6 +256,7 @@
             AddButton.TabIndex = 0;
             AddButton.TabStop = true;
             AddButton.Text = "&Add";
+            toolTip1.SetToolTip(AddButton, "Sets answer as first number + second number");
             AddButton.UseVisualStyleBackColor = true;
             AddButton.CheckedChanged += Button_Changed;
             // 
@@ -269,6 +279,7 @@
             ExitButton.Size = new Size(169, 64);
             ExitButton.TabIndex = 3;
             ExitButton.Text = "E&xit";
+            toolTip1.SetToolTip(ExitButton, "Closes the program");
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
@@ -279,6 +290,7 @@
             SummaryButton.Size = new Size(169, 64);
             SummaryButton.TabIndex = 2;
             SummaryButton.Text = "Summary";
+            toolTip1.SetToolTip(SummaryButton, "SHows how many correct answers out of the total answers");
             SummaryButton.UseVisualStyleBackColor = true;
             SummaryButton.Click += SummaryButton_Click;
             // 
@@ -289,6 +301,7 @@
             ClearButton.Size = new Size(169, 64);
             ClearButton.TabIndex = 1;
             ClearButton.Text = "&Clear";
+            toolTip1.SetToolTip(ClearButton, "Clears the form");
             ClearButton.UseVisualStyleBackColor = true;
             ClearButton.Click += ClearButton_Click;
             // 
@@ -299,6 +312,7 @@
             SubmitButton.Size = new Size(169, 64);
             SubmitButton.TabIndex = 0;
             SubmitButton.Text = "&Submit";
+            toolTip1.SetToolTip(SubmitButton, "Submits the answer and checks if it is correct");
             SubmitButton.UseVisualStyleBackColor = true;
             SubmitButton.Click += SubmitButton_Click;
             // 
@@ -349,5 +363,6 @@
         private Label AnswerLabel;
         private Label TwoNumLabel;
         private Label OneNumLabel;
+        private ToolTip toolTip1;
     }
 }
